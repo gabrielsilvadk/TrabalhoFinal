@@ -49,39 +49,41 @@ namespace TrabalhoFinal
 
 
             // INTERAÇÃO COM USUÁRIO
-            var login = new Login();
-            // login.Run();
-            // Console.WriteLine("Digite seu nome: ");
-            // string nome = Console.ReadLine();
+            //var login = new Login();
+            //login.Run();
+            Console.WriteLine("Digite seu nome: ");
+            string nome = Console.ReadLine();
 
-            // Console.WriteLine("Digite seu Email: ");
-            // string email = Console.ReadLine();
-            // var mail = new Email(email);
+            Console.WriteLine("Digite seu Email: ");
+            string email = Console.ReadLine();
+            var mail = new Email(email);
 
-            // Console.WriteLine("Digite seu CPF: ");
-            // string cpf = Console.ReadLine();
-            // var cpf1 = new Cpf(cpf);
+            Console.WriteLine("Digite seu CPF: ");
+            string cpf = Console.ReadLine();
+            var cpf1 = new Cpf(cpf);
 
-            // Console.WriteLine("Digite seu senha: ");
-            // string senha = Console.ReadLine();
+            Console.WriteLine("Digite seu senha: ");
+            string senha = Console.ReadLine();
 
 
-            // var pessoa = processosPessoas.Cadastrar(nome, mail, cpf1, senha);
-            var pessoa1 = processosPessoas.Cadastrar("Gabriel", new Email("teste@teste1.com.br"), new Cpf("11111111111"), "123");
+            var pessoa = processosPessoas.Cadastrar(nome, mail, cpf1, senha);
 
-            var pessoa2 = processosPessoas.Cadastrar("Andressa", new Email("teste@teste.com.br"), new Cpf("11111111111"), "123");
-            var idPessoa = repositorioPessoas.Cadastrar(pessoa1);
-            var idPessoa2 = repositorioPessoas.Cadastrar(pessoa2);
-            var acheiPessoa = repositorioPessoas.BuscarPorId(3);
-            var acheiPessoa2 = repositorioPessoas.BuscarPorId(4);
+            var idPessoa = repositorioPessoas.Cadastrar(pessoa);
+            var acheiPessoa = repositorioPessoas.BuscarPorId(2);
 
             Console.WriteLine("Id: {0}", idPessoa);
-            Console.WriteLine("Id: {0}", idPessoa2);
 
             Console.WriteLine("Pessoa: {0}", acheiPessoa.Nome);
-            Console.WriteLine("Pessoa2: {0}", acheiPessoa2.Nome);
 
-            var login1 = processosPessoas.Login(new Email("teste@teste1.com.br"), "122");
+            Console.WriteLine("Digite seu Email: ");
+            string emailLogin = Console.ReadLine();
+            var mailLogin = new Email(emailLogin);
+
+            Console.WriteLine("Digite seu senha: ");
+            string senhaLogin = Console.ReadLine();
+            
+            
+            var login1 = processosPessoas.Login(mailLogin, senhaLogin);
             if (login1.Sucesso)
             {
                 Console.WriteLine("Pessoa Logada: {0}", login1.PessoaCasoSucesso.Nome);
