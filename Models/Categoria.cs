@@ -1,8 +1,9 @@
+using System;
 namespace TrabalhoFinal.Models
 {
     public class Categoria
     {
-       public Categoria(int idcategoria, string nomecategoria, string datacategoria){
+       public Categoria(int idcategoria, string nomecategoria, DateTime datacategoria){
         if (nomecategoria == null)
                 throw new System.Exception("");
 
@@ -14,6 +15,6 @@ namespace TrabalhoFinal.Models
 
         public string NomeCategoria { get; set; }
 
-        public string DataCategoria { get; set; }
+        public DateTime DataCategoria { get; set; }
     }
 }

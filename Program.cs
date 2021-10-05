@@ -56,7 +56,7 @@ namespace TrabalhoFinal
             if (nome == "")
                 throw new System.Exception("Nome não pode estar em branco");
 
-        
+
 
             Console.WriteLine("Digite seu Email: ");
             string email = Console.ReadLine();
@@ -70,7 +70,7 @@ namespace TrabalhoFinal
             string senha = Console.ReadLine();
 
             Pessoa pessoa = processosPessoas.Cadastrar(nome, mail, cpf1, senha);
-            
+
 
 
             var idPessoa = repositorioPessoas.Cadastrar(pessoa);
@@ -84,7 +84,7 @@ namespace TrabalhoFinal
 
             Console.WriteLine("\n");
             Console.WriteLine("TELA DE LOGIN");
-            Console.WriteLine("===================="+ "\n");
+            Console.WriteLine("====================" + "\n");
 
 
 
@@ -94,14 +94,37 @@ namespace TrabalhoFinal
             string emailLogin = Console.ReadLine();
             var mailLogin = new Email(emailLogin);
 
-            Console.WriteLine("Digite seu senha: ");
+            Console.WriteLine("Digite sua senha: ");
             string senhaLogin = Console.ReadLine();
-            
-            
+
+
             var login1 = processosPessoas.Login(mailLogin, senhaLogin);
             if (login1.Sucesso)
             {
                 Console.WriteLine("Pessoa Logada com sucesso: {0}", login1.PessoaCasoSucesso.Nome);
+
+                System.Console.WriteLine("\n" + "TELA DA CATEGORIAS" + "\n" + "==========" + "\n" + "Favor Cadastrar uma categoria: ");
+
+                Console.WriteLine("Digite o nome da categoria: ");
+                string nomeCategoria = Console.ReadLine();
+                if (nomeCategoria == "")
+                    throw new System.Exception("Nome não pode estar em branco");
+
+
+                var dataCategoria = DateTime.Today;
+
+
+
+                Categoria categoria = ProcessosCategorias.CadastrarCategoria(1, nomeCategoria, dataCategoria);
+
+                var idCategoria = repositorioCategorias.CadastrarCategoria(categoria);
+
+
+
+                Console.WriteLine("Cadastro Realizado com Sucesso: " + categoria.NomeCategoria);
+
+
+
 
             }
             else

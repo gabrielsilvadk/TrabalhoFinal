@@ -1,6 +1,7 @@
 using TrabalhoFinal.Models;
 using TrabalhoFinal.Repositorios;
 using System.Collections.Generic;
+using System;
 
 namespace TrabalhoFinal
 {
@@ -14,7 +15,7 @@ namespace TrabalhoFinal
         }
 
 
-        public Categoria CadastrarCategoria(int idcat, string nomecat, string datacat)
+        public Categoria CadastrarCategoria(int idcat, string nomecat, DateTime datacat)
         {
             var categoria = new Categoria(0, nomecat, datacat);
 
@@ -24,7 +25,7 @@ namespace TrabalhoFinal
             return categoria;
         }
 
-        public List<Categoria> Listar(string filtroId = null, string filtroNome = null)
+        public List<Categoria> Listar(string nomeCategoria = null)
         {
             // Recuperar o id ao cadastro no banco de dados
             // Setar o id na classe
