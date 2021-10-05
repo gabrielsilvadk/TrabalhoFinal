@@ -53,6 +53,10 @@ namespace TrabalhoFinal
             //login.Run();
             Console.WriteLine("Digite seu nome: ");
             string nome = Console.ReadLine();
+            if (nome == "")
+                throw new System.Exception("Nome não pode estar em branco");
+
+        
 
             Console.WriteLine("Digite seu Email: ");
             string email = Console.ReadLine();
@@ -65,8 +69,9 @@ namespace TrabalhoFinal
             Console.WriteLine("Digite seu senha: ");
             string senha = Console.ReadLine();
 
+            Pessoa pessoa = processosPessoas.Cadastrar(nome, mail, cpf1, senha);
+            
 
-            var pessoa = processosPessoas.Cadastrar(nome, mail, cpf1, senha);
 
             var idPessoa = repositorioPessoas.Cadastrar(pessoa);
             var acheiPessoa = repositorioPessoas.BuscarPorId(2);
@@ -74,6 +79,16 @@ namespace TrabalhoFinal
             Console.WriteLine("Id: {0}", idPessoa);
 
             Console.WriteLine("Pessoa: {0}", acheiPessoa.Nome);
+            Console.WriteLine("Cadastro Realizado com Sucesso");
+
+
+            Console.WriteLine("\n");
+            Console.WriteLine("TELA DE LOGIN");
+            Console.WriteLine("===================="+ "\n");
+
+
+
+
 
             Console.WriteLine("Digite seu Email: ");
             string emailLogin = Console.ReadLine();
@@ -86,7 +101,7 @@ namespace TrabalhoFinal
             var login1 = processosPessoas.Login(mailLogin, senhaLogin);
             if (login1.Sucesso)
             {
-                Console.WriteLine("Pessoa Logada: {0}", login1.PessoaCasoSucesso.Nome);
+                Console.WriteLine("Pessoa Logada com sucesso: {0}", login1.PessoaCasoSucesso.Nome);
 
             }
             else

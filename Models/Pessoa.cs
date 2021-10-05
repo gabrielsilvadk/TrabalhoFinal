@@ -4,8 +4,8 @@ namespace TrabalhoFinal.Models
     {
         public Pessoa(int id, string nome, Email email, Cpf cpf, string senha)
         {
-            if (nome == null)
-                throw new System.Exception("");
+            if (nome == "")
+                throw new System.Exception("Nome não pode estar em branco");
 
             Id = id;
             Nome = nome;
