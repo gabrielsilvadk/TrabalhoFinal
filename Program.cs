@@ -51,6 +51,8 @@ namespace TrabalhoFinal
             // INTERAÇÃO COM USUÁRIO
             //var login = new Login();
             //login.Run();
+            
+            
             Console.WriteLine("Digite seu nome: ");
             string nome = Console.ReadLine();
             if (nome == "")
@@ -103,25 +105,42 @@ namespace TrabalhoFinal
             {
                 Console.WriteLine("Pessoa Logada com sucesso: {0}", login1.PessoaCasoSucesso.Nome);
 
-                System.Console.WriteLine("\n" + "TELA DA CATEGORIAS" + "\n" + "==========" + "\n" + "Favor Cadastrar uma categoria: ");
+                System.Console.WriteLine("\n" + "TELA DA CATEGORIAS" + "\n" + "==========" + "\n" + "Favor Cadastrar um Lançamento: ");
 
-                Console.WriteLine("Digite o nome da categoria: ");
-                string nomeCategoria = Console.ReadLine();
-                if (nomeCategoria == "")
+                Console.WriteLine("Digite o nome do lançamento: ");
+                string nomeLancamento = Console.ReadLine();
+                if (nomeLancamento == "")
                     throw new System.Exception("Nome não pode estar em branco");
 
+                System.Console.WriteLine("o formato da data de lançamento deve ser como neste exemplo: Jan 1, 2009");
+                System.Console.WriteLine("informe a data: ");
+                
+                string dateInput = Console.ReadLine();
+                var parsedDate = DateTime.Parse(dateInput);
 
-                var dataCategoria = DateTime.Today;
+                System.Console.WriteLine("informe o tipo de lançamento"+"\n"+"(Crédito ou Débito): ");
+                string tipo = Console.ReadLine();
+
+                
+
+
+                Categoria lancamento = ProcessosCategorias.CadastrarCategoria(1, nomeLancamento, parsedDate, tipo);
+
+                var idCategoria = repositorioCategorias.CadastrarCategoria(lancamento);
 
 
 
-                Categoria categoria = ProcessosCategorias.CadastrarCategoria(1, nomeCategoria, dataCategoria);
+                Console.WriteLine("Cadastro Realizado com Sucesso: " + lancamento.NomeCategoria + " "+ parsedDate + " "+ tipo);
 
-                var idCategoria = repositorioCategorias.CadastrarCategoria(categoria);
+                /*
+                System.Console.WriteLine("Deseja cadastrar mais um lançamento(1 para sim ou 2 para não): ");
+                string escolha = Console.ReadLine();
+                var escolhaInt = int.Parse(escolha);
 
+                System.Console.WriteLine(escolhaInt);
+                */
 
-
-                Console.WriteLine("Cadastro Realizado com Sucesso: " + categoria.NomeCategoria);
+                
 
 
 

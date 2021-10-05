@@ -15,9 +15,9 @@ namespace TrabalhoFinal
         }
 
 
-        public Categoria CadastrarCategoria(int idcat, string nomecat, DateTime datacat)
+        public Categoria CadastrarCategoria(int idcat, string nomecat, DateTime datacat, string tipocat)
         {
-            var categoria = new Categoria(0, nomecat, datacat);
+            var categoria = new Categoria(0, nomecat, datacat, tipocat);
 
             int id = repositorioCategorias.CadastrarCategoria(categoria);
             categoria.IdCategoria = id;
